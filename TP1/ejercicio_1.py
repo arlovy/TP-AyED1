@@ -17,8 +17,8 @@ def comparar_enteros(lista_enteros):
     """
     maximo_entero = max(lista_enteros)
     if lista_enteros.count(maximo_entero) > 1:
-        return False
-    return f"El mayor valor es {maximo_entero}"
+        return -1
+    return maximo_entero
 
 
 def verificar_positivos(lista_enteros):
@@ -41,10 +41,9 @@ if __name__ == "__main__":
         enteros = [int(input(f"Ingrese el {i + 1}° entero: ")) for i in range(3)]
         MAYOR_ESTRICTO = comparar_enteros(enteros)
         if verificar_positivos(enteros):
-            print(MAYOR_ESTRICTO)
+            print(f"El mayor estricto es {MAYOR_ESTRICTO}")
         else:
             print("Todos los números deben ser positivos.")
 
     except ValueError:
         print("Error. Todos los datos deben ser enteros.")
-        
