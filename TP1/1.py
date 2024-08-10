@@ -6,8 +6,8 @@ también un programa para ingresar los tres valores, invocar a la función y mos
 el máximo hallado, o un mensaje informativo si éste no existe.
 """
 
-def comparar_enteros(a,b,c):
-    lista_enteros = [a,b,c]
+
+def comparar_enteros(lista_enteros):
     maximo_entero = max(lista_enteros)
     if lista_enteros.count(maximo_entero) > 1:
         return "No hay un mayor estricto"
@@ -15,7 +15,13 @@ def comparar_enteros(a,b,c):
 
 
 if __name__ == "__main__":
-    int1 = int(input("Ingrese el primer entero: "))
-    int2 = int(input("Ingrese el segundo entero: "))
-    int3 = int(input("Ingrese el tercer entero: "))
-    print(comparar_enteros(int1,int2,int3))
+
+    enteros = [int(input(f"Ingrese el {i + 1}° entero: ")) for i in range(3)]
+    no_hay_negativos = True
+    for entero in enteros:
+        if entero < 0:
+            print("Error. Todos los enteros deben ser positivos.")
+            no_hay_negativos = False
+            break
+    if no_hay_negativos:
+        print(comparar_enteros(enteros))
