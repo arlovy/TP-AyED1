@@ -41,9 +41,13 @@ if __name__ == "__main__":
         enteros = [int(input(f"Ingrese el {i + 1}° entero: ")) for i in range(3)]
         MAYOR_ESTRICTO = comparar_enteros(enteros)
         if verificar_positivos(enteros):
-            print(f"El mayor estricto es {MAYOR_ESTRICTO}")
+            match MAYOR_ESTRICTO:
+                case -1:
+                    print("No hay un mayor estricto.")
+                case _:
+                    print(f"El mayor estricto es {MAYOR_ESTRICTO}")
         else:
-            print("Todos los números deben ser positivos.")
+            print("Error. Todos los números deben ser positivos.")
 
     except ValueError:
         print("Error. Todos los datos deben ser enteros.")
