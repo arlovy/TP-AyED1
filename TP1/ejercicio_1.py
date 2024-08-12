@@ -38,7 +38,9 @@ def verificar_positivos(lista_enteros):
 if __name__ == "__main__":
 
     try:
-        enteros = [int(input(f"Ingrese el {i + 1}° entero: ")) for i in range(3)]
+        enteros = []
+        for i in range(3):
+            enteros.append(int(input(f"Ingrese el {i + 1}° entero: ")))
         MAYOR_ESTRICTO = comparar_enteros(enteros)
         if verificar_positivos(enteros):
             match MAYOR_ESTRICTO:
