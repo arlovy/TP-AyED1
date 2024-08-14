@@ -7,7 +7,7 @@ el máximo hallado, o un mensaje informativo si éste no existe.
 """
 
 
-def comparar_enteros(lista_enteros):
+def comparar_enteros(lista_enteros: list):
     """
     Esta función verifica si existe un número mayor estricto en
     una lista de números.
@@ -21,7 +21,7 @@ def comparar_enteros(lista_enteros):
     return maximo_entero
 
 
-def verificar_positivos(lista_enteros):
+def verificar_positivos(lista_enteros: list):
     """
     Verifica que todos los números en una lista sean positivos.
 

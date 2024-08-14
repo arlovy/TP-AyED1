@@ -7,7 +7,7 @@ programa para verificar el comportamiento de la función.
 """
 
 
-def fecha_es_valida(dia, mes, year):
+def fecha_es_valida(dia: int, mes: int, year: int):
     """
     Verifica si los enteros pasados como dia, mes y año corresponden a una fecha válida,
     teniendo en cuenta años bisiestos y los días máximos que puede tener un mes.
@@ -38,7 +38,7 @@ def fecha_es_valida(dia, mes, year):
         return True
 
 
-def es_bisiesto(year):
+def es_bisiesto(year: int):
     """
     Verifica que el año sea bisiesto.
 
