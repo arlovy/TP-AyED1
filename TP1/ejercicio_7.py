@@ -9,7 +9,7 @@
 """
 
 
-def fecha_es_valida(dia: int, mes: int, year: int):
+def fecha_es_valida(dia: int, mes: int, year: int, dict_days: dict):
     """
     Verifica si los enteros pasados como dia, mes y año corresponden a una fecha válida,
     teniendo en cuenta años bisiestos y los días máximos que puede tener un mes.
@@ -19,7 +19,7 @@ def fecha_es_valida(dia: int, mes: int, year: int):
 
     if dia == 29 and mes == 2 and es_bisiesto(year):
         return True
-    if dia > dias_por_mes.get(mes) or dia < 1:
+    if dia > dict_days.get(mes) or dia < 1:
         return False
     else:
         return True
@@ -35,7 +35,7 @@ def es_bisiesto(year: int):
     return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 
 
-def diasiguiente(dia: int, mes: int, year: int):
+def diasiguiente(dia: int, mes: int, year: int, dict_days: dict):
     """
     Esta función recibe tres enteros correspondientes a una fecha.
     Le suma un día a la fecha, y modifica los otros valores si correspondiera.
@@ -44,23 +44,23 @@ def diasiguiente(dia: int, mes: int, year: int):
     """
 
     if es_bisiesto(year):
-        dias_por_mes[2] = 29
+        dict_days[2] = 29
 
     dia += 1
-    if dia > dias_por_mes.get(mes):
+    if dia > dict_days.get(mes):
         mes += 1
         dia = 1
     if mes > 12:
         year += 1
         mes = 1
 
-    if dias_por_mes[2] == 29:
-        dias_por_mes[2] = 28
+    if dict_days[2] == 29:
+        dict_days[2] = 28
 
     return [dia, mes, year]
 
 
-def sumar_tantos_dias(fecha: list[int], dias: int) -> list[int]:
+def sumar_tantos_dias(fecha: list[int], dias: int, dict_days: dict) -> list[int]:
     """
     Esta función toma como parámetro una lista de tres enteros, que representa una fecha,
     y un entero que representa la cantidad de días a sumar.
@@ -70,12 +70,14 @@ def sumar_tantos_dias(fecha: list[int], dias: int) -> list[int]:
 
     for _ in range(dias):
         day, month, year = fecha
-        fecha = diasiguiente(day, month, year)
+        fecha = diasiguiente(day, month, year, dict_days)
 
     return fecha
 
 
-def calcular_dias_between(first_date: list[int], second_date: list[int]) -> int:
+def calcular_dias_between(
+    first_date: list[int], second_date: list[int], dict_days: dict
+) -> int:
     """
     Toma dos listas de 3 enteros que representan fechas. Ejecuta la función
     diasiguiente() y cuenta la cantidad de dias hasta que las fechas son iguales.
@@ -85,7 +87,7 @@ def calcular_dias_between(first_date: list[int], second_date: list[int]) -> int:
     contador_dias = 0
     while first_date != second_date:
         day, month, year = first_date
-        first_date = diasiguiente(day, month, year)
+        first_date = diasiguiente(day, month, year, dict_days)
         contador_dias += 1
 
     return contador_dias
@@ -118,22 +120,23 @@ if __name__ == "__main__":
                 day_input = int(input("Ingrese el día: "))
                 month_input = int(input("Ingrese el mes: "))
                 year_input = int(input("Ingrese el año: "))
-                if fecha_es_valida(day_input, month_input, year_input):
+                if fecha_es_valida(day_input, month_input, year_input, dias_por_mes):
                     date_list = [day_input, month_input, year_input]
                     days_to_add = int(input("Ingrese la cantidad de dias a sumar: "))
-                    day, month, year = sumar_tantos_dias(date_list, days_to_add)
-                    print(f"La fecha resultante es {day}/{month}/{year}")
+                    dia_final, mes_final, anio = sumar_tantos_dias(
+                        date_list, days_to_add, dias_por_mes
+                    )
+                    print(f"La fecha resultante es {dia_final}/{mes_final}/{anio}")
                 else:
                     print("La fecha ingresada no es válida.")
 
-
             case 2:
-                dates = [[],[]]
+                dates = [[], []]
                 for i in range(2):
                     dates[i].append(int(input("Ingrese el día: ")))
                     dates[i].append(int(input("Ingrese el mes: ")))
                     dates[i].append(int(input("Ingrese el año: ")))
-                RESULTADO = calcular_dias_between(dates[0], dates[1])
+                RESULTADO = calcular_dias_between(dates[0], dates[1], dias_por_mes)
 
                 print(f"Entre ambas fechas hay {RESULTADO} días de diferencia.")
 
