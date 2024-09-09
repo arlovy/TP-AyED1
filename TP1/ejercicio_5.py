@@ -19,4 +19,19 @@ es_triangular = lambda num: any(
     (i * (i + 1) / 2) == num for i in range(1, num)
 )  # formula para numeros triangulares (n+(n+1))/2
 
-print(es_triangular(45))
+if __name__ == "__main__":
+
+    try:
+        ingreso = int(input("Ingrese el numero: "))
+        if es_oblongo(ingreso):
+            print(f"{ingreso} es oblongo.")
+        else:
+            print(f"{ingreso} no es oblongo.")
+
+        if es_triangular(ingreso):
+            print(f"{ingreso} es triangular.")
+        else:
+            print(f"{ingreso} no es triangular.")
+                
+    except ValueError:
+        print("El dato ingresado debe ser entero.")
