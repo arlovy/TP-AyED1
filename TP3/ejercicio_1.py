@@ -22,6 +22,12 @@ ción:
 
 
 def cargar_numeros(n: int):
+    """
+    Esta función recibe un entero positivo y retorna una matriz de NxN donde
+    se le solicita al usuario introducir cada uno de los valores.
+    Recibe un entero positivo.
+    Retorna una matriz.
+    """
     matrix = [
         [
             int(input(f"Ingrese el {j + 1}° entero de la {i + 1}° fila: "))
@@ -33,25 +39,50 @@ def cargar_numeros(n: int):
 
 
 def ordenar_listas(matrix: list[list[int]]):
+    """
+    Esta función recibe una matriz y ordena de manera ascendente
+    cada un de sus filas.
+    No retorna nada.
+    """
     for lista in matrix:
         lista.sort()
 
 
 def intercambiar_filas(matrix: list[list[int]], c1: int, c2: int):
+    """
+    Esta función intercambia los valores de dos filas dentro de una matriz.
+    Recibe como parámetros una matriz, y dos enteros que representan el indice de las filas.
+    No retorna nada.
+    """
     aux = matrix[c1]
     matrix[c1] = matrix[c2]
     matrix[c2] = aux
 
 
 def trasponer_matriz(matrix: list[list[int]]):
+    """
+    Esta función traspone una matriz, invirtiéndola.
+    Recibe como parámetro una matriz.
+    Retorna una matriz con los valores traspuestos.
+    """
     return list(map(list, zip(*matrix)))
 
 
 def calcular_promedios(matrix: list[list[int]], c: int):
+    """
+    Esta función calcula el promedio de una fila dentro de una matriz.
+    Recibe una matriz de enteros y un entero que representa el indice de una fila.
+    Retorna el promedio de los enteros dentro de esa matriz.
+    """
     return sum(matrix[c]) / len(matrix[c])
 
 
 def calcular_impares_percent(matrix: list[list[int]], c: int):
+    """
+    Calcula el porcentaje de vlores impres dentro de una matriz.
+    Recibe como parámetros una matriz con enteros, y un entero que representa el indice de una fila.
+    Retorna el porcentaje de valores impares en esa fila.
+    """
     impares = 0
     for numero in matrix[c]:
         if numero % 2 != 0:
