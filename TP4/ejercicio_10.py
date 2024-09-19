@@ -9,6 +9,12 @@ para verificar el comportamiento de la función.
 import re
 
 def reemplazar_palabra(cadena: str, palabra_a_reemplazar: str, nueva_palabra: str):
+    """
+    Esta función reemplaza todas las apariciones de una subcadena dentro de una cadena por un valor
+    ingresado.
+    Recibe tres strings; una cadena, la palabra a reemplazar y la nueva palabra.
+    Retorna una tupla con la nueva cadena y la cantidad de reemplazos.
+    """
     patron = r'\b' + re.escape(palabra_a_reemplazar) + r'\b'
 
     nueva_cadena, cantidad_reemplazos = re.subn(patron, nueva_palabra, cadena)
