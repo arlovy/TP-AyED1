@@ -7,14 +7,15 @@ posiciones  pares.  Los  dígitos  se  numeran  desde  la  izquierda.  Ejemplo: 
 maestra fuera 18293, la clave 1 sería 123 y la clave 2 sería 89.
 """
 
+
 def obtener_claves(clavicula: str):
     """
     Esta función recibe un string y lo divide en dos, uno con los caracteres en
     posiciones pares y otro con caracteres en posiciones impares, y luego
     los retorna en una tupla.
     """
-    clavicula1 = ''
-    clavicula2 = ''
+    clavicula1 = ""
+    clavicula2 = ""
 
     for i in range(len(clavicula)):
         if i % 2 == 0:
@@ -23,6 +24,7 @@ def obtener_claves(clavicula: str):
             clavicula2 += clavicula[i]
 
     return clavicula1, clavicula2
+
 
 # Ejemplo de uso
 clave_maestra = int(input("Ingrese la clave maestra: "))
