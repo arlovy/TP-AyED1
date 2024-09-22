@@ -90,6 +90,59 @@ def calcular_impares_percent(matrix: list[list[int]], c: int):
     return impares / len(matrix[c])
 
 
+def simetrica_diag_principal(matrix: list[list[int]]) -> bool:
+    """
+    Compara a partir de la diagonal principal de una matriz y
+    verifica si es simétrica.
+    Recibe una matriz de enteros.
+    Retorna True o False según si la matriz es simétrica o no.
+    """
+    n = len(matrix)
+
+    for i in range(n):
+        for j in range(i + 1, n):
+            if matrix[i][j] != matrix[j][i]:
+                return False
+    return True
+
+
+def simetrica_diag_secundaria(matrix: list[list[int]]) -> bool:
+    """
+    Compara a partir de la diagonal secundaria de una matriz y
+    verifica si es simétrica.
+    Recibe una matriz de enteros.
+    Retorna True o False según si la matriz es simétrica o no.
+    """
+    n = len(matrix)
+
+    for i in range(n):
+        for j in range(n - i - 1):
+            if matrix[i][j] != matrix[n - j - 1][n - i - 1]:
+                return False
+    return True
+
+
+def columnas_palindromas(matrix: list[list[int]]) -> bool:
+    """
+    Determina qué columnas de una matriz de enteros son palíndromas.
+    Recibe una matriz de enteros.
+    Retorna una lista con los índices de las matrices que sean palíndromas.
+    """
+    n = len(matrix)
+    columnas_palindromo = []
+
+    for j in range(n):
+        es_palindromo = True
+        for i in range(n // 2):
+            if matrix[i][j] != matrix[n - i - 1][j]:
+                es_palindromo = False
+                break
+        if es_palindromo:
+            columnas_palindromo.append(j)
+
+    return columnas_palindromo
+
+
 def xd():
     """
     Esta opción ejecuta un menú para manejar el programa.
@@ -159,12 +212,43 @@ def xd():
                         f"{porcentaje}% de los valores de la columna {columna} son impares."
                     )
                     print()
+                else:
+                    print("La matriz está vacia.")
             case 7:
-                pass
+                if matriz:
+                    salida = simetrica_diag_principal(matriz)
+                    if salida:
+                        print(
+                            "La matriz es simetrica respecto de su diagonal principal."
+                        )
+                    else:
+                        print(
+                            "La matriz no es simetrica respetco de su diagonal principal."
+                        )
+                else:
+                    print("La matriz está vacia.")
+
             case 8:
-                pass
+                if matriz:
+                    salida = simetrica_diag_secundaria(matriz)
+                    if salida:
+                        print(
+                            "La matriz es simetrica respecto de su diagonal secundaria."
+                        )
+                    else:
+                        print(
+                            "La matriz no es simetrica respetco de su diagonal secundaria."
+                        )
+                else:
+                    print("La matriz está vacia.")
             case 9:
-                pass
+                if matriz:
+                    salida = columnas_palindromas(matriz)
+                    if salida:
+                        for columna in salida:
+                            print(f"La columna {columna} es palíndroma.")
+                    else:
+                        print("No hay columnas palíndromas.")
             case 10:
                 print("Saliendo...")
                 break
