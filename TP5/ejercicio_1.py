@@ -31,6 +31,6 @@ if __name__ == "__main__":
     while True:
         OUT = return_nat()
         if OUT:
-            print(out)
+            print(OUT)
         else:
             print("Ingrese nuevamente.")
