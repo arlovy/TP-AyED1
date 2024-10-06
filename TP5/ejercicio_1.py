@@ -10,7 +10,9 @@ miento de la misma
 
 def return_nat() -> int:
     """
-    
+    Solicita un número y verifica que sea un entero positivo.
+    No recibe nada.
+    Retorna el entero ingresado si es positivo, y 0 si no es válido.
     """
     try:
         n = int(input("Ingrese un número: "))
@@ -27,8 +29,8 @@ def return_nat() -> int:
 
 if __name__ == "__main__":
     while True:
-        out = return_nat()
-        if out:
+        OUT = return_nat()
+        if OUT:
             print(out)
         else:
             print("Ingrese nuevamente.")
