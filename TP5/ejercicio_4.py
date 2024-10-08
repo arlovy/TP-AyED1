@@ -7,7 +7,10 @@ confirmación al usuario antes de detenerse cuando se presione Ctrl-C.
 
 def imprimir_numeros() -> None:
     """
-        
+    Esta función imprime los números del 1 al 100000 y solo puede ser interrumpida
+    con el atajo Ctrl + C.
+    No recibe nada.
+    No retorna nada.
     """
     n = 1
     while n < 100000:
